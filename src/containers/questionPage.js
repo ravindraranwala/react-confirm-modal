@@ -44,13 +44,13 @@ QuestionPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
     return {
-        modalIsOpen: state.questions.modalIsOpen
+        modalIsOpen: state.question.modalIsOpen
     };
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(toggleQuestionModal, dispatch)
+        toggleQuestionModal: bindActionCreators(toggleQuestionModal, dispatch)
     };
 }
 
