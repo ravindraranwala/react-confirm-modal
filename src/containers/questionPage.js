@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { toggleQuestionModal } from '../actions/questionActions';
+import { toggleQuestionModal, toggleConfirmation } from '../actions/questionActions';
 import QuestionModal from '../components/questionModal';
 
 class QuestionPage extends Component {
@@ -23,7 +23,7 @@ class QuestionPage extends Component {
     }
 
     closeModal() {
-        this.props.toggleQuestionModal(false);
+        this.props.toggleConfirmation(true);
     }
 
     render() {
@@ -39,7 +39,8 @@ class QuestionPage extends Component {
 
 QuestionPage.propTypes = {
     modalIsOpen: PropTypes.bool.isRequired,
-    toggleQuestionModal: PropTypes.func.isRequired
+    toggleQuestionModal: PropTypes.func.isRequired,
+    toggleConfirmation: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
@@ -50,7 +51,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggleQuestionModal: bindActionCreators(toggleQuestionModal, dispatch)
+        toggleQuestionModal: bindActionCreators(toggleQuestionModal, dispatch),
+        toggleConfirmation: bindActionCreators(toggleConfirmation, dispatch)
     };
 }
 

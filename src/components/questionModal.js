@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
 
 const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) => {
-
   const customStyles = {
     overlay: {
       position: 'fixed',
