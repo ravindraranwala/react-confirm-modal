@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
+Modal.setAppElement('#app');
 
 const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) => {
   const customStyles = {
@@ -22,7 +23,6 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
     }
   };
 
-
   return (
     <div>
       <button onClick={openModal}>Open Modal</button>
@@ -31,7 +31,8 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Create A Question"
+        role="dialog"
       >
 
         <h2>Hello</h2>
