@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
-Modal.setAppElement('#app');
 
 const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) => {
   const customStyles = {
@@ -22,6 +21,12 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
       transform: 'translate(-50%, -50%)'
     }
   };
+
+  const getApplicationNode = () => {
+    return document.getElementById('app')
+  }
+
+  Modal.setAppElement(getApplicationNode())
 
   return (
     <div>
