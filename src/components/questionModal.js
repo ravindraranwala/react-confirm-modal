@@ -18,15 +18,17 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
+      height: '30%',
+      width: '50%',
       transform: 'translate(-50%, -50%)'
     }
   };
 
   const getApplicationNode = () => {
-    return document.getElementById('app')
-  }
+    return document.getElementById('app');
+  };
 
-  Modal.setAppElement(getApplicationNode())
+  Modal.setAppElement(getApplicationNode());
 
   return (
     <div>
