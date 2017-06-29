@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
+import TinyMCE from 'react-tinymce';
 
 const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) => {
   const customStyles = {
@@ -18,11 +19,15 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
-      height: '30%',
-      width: '50%',
+      height: '50%',
+      width: '80%',
       transform: 'translate(-50%, -50%)'
     }
   };
+
+ const  handleEditorChange = (e) => {
+    console.log('Content was updated:', e.target.getContent());
+  }
 
   const getApplicationNode = () => {
     return document.getElementById('app');
@@ -47,6 +52,14 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
         <div>I am a modal</div>
         <form>
           <input />
+          <TinyMCE
+            content="<p>This is the initial content of the editor</p>"
+            config={{
+              plugins: 'link image code',
+              toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+            }}
+            onChange={handleEditorChange}
+           />
           <button>tab navigation</button>
           <button>stays</button>
           <button>inside</button>
