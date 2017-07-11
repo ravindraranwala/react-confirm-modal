@@ -14,7 +14,7 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
-    "@pearson-components/modal": "^0.4.2",
+    "@pearson-components/modal": "^0.5.2",
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
     "jquery": "2.2.3",
