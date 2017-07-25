@@ -27,7 +27,8 @@
     "react-tinymce": "^0.5.1",
     "redux": "3.5.2",
     "redux-thunk": "2.0.1",
-    "toastr": "2.1.2"
+    "toastr": "2.1.2",
+    "uxcore-tinymce": "^0.2.8"
   },
   "devDependencies": {
     "babel-cli": "6.8.0",

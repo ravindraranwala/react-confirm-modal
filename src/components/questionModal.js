@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
-import TinyMCE from 'react-tinymce';
+import Tinymce from 'uxcore-tinymce';
 import { uploadImage } from '../utils/imageUploader';
 
 const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) => {
@@ -34,6 +34,14 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
     return document.getElementById('app');
   };
 
+const handleKeyUp = (e, editor) => {
+    console.log(editor.getContent());
+}
+
+const handleChange = (e, editor) => {
+    console.log(editor.getContent());
+}
+
   Modal.setAppElement(getApplicationNode());
 
   return (
@@ -53,11 +61,12 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
         <div>I am a modal</div>
         <form>
           <input />
-          <TinyMCE
-            content="<p>This is the initial content of the editor</p>"
+           <Tinymce onKeyUp={handleKeyUp}
+          content="<p>This is the initial content of the editor</p>"
             config={{
               plugins: 'link image code',
-              toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
+              menubar: false,
+              toolbar1: 'undo image',
               file_picker_types: 'image',
               // enables drag and drop with paste capabilities.
               paste_data_images: true,
@@ -74,6 +83,7 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
 
                 input.onchange = function () {
                   const file = this.files[0]
+                  console.log('File is picked up !')
                   const reader = new FileReader()
                   reader.readAsDataURL(file)
                   reader.onload = function () {
@@ -98,6 +108,7 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
                   return false;
                 } else {
                   // Call the action here, get the response url and set the publicUrl to the success here.
+                  console.log('Uploading image !')
                   uploadImage(blobInfo.blob(), blobInfo.filename()).then(response => response.json()).then(jsonResponse => {
                     success(jsonResponse.availableFormats[0].href)
                   }).catch(e => { throw e })
@@ -106,8 +117,7 @@ const QuestionModal = ({ modalIsOpen, openModal, closeModal, afterOpenModal }) =
                 }
               }
             }}
-            onChange={handleEditorChange}
-           />
+            onChange={handleEditorChange}/>
           <button>tab navigation</button>
           <button>stays</button>
           <button>inside</button>
