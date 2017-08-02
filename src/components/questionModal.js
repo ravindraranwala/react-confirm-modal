@@ -64,6 +64,7 @@ const handleChange = (e, editor) => {
            <Tinymce onKeyUp={handleKeyUp}
           content="<p>This is the initial content of the editor</p>"
             config={{
+              language: 'en',
               plugins: 'link image code',
               menubar: false,
               toolbar1: 'undo image',
